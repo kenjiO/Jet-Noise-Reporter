@@ -66,8 +66,8 @@ public class JetNoiseAppDB extends SQLiteOpenHelper {
         values.put(COLUMN_CALLER_CODE, callerCode);
         //values.put(COLUMN_REPORT_DATE,"2013-10-07 08:23:19.120");
         // Insert the new row, returning the primary key value of the new row
-        long newRowId;
-        newRowId = db.insert(TABLE_USERS, null, values);
+        long newRowId = -1;
+       newRowId = db.insert(TABLE_USERS, null, values);
         db.close();
         return  newRowId;
     }
@@ -76,7 +76,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " + COLUMN_NAME + " FROM " + TABLE_USERS;
         Cursor cursor = db.rawQuery(query, null);
-        String result = "Not Found";
+        String result = null;
         if (cursor.moveToFirst()) {
             cursor.moveToFirst();
             result = cursor.getString(0);
