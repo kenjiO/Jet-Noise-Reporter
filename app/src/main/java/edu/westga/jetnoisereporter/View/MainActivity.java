@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     private void showProfileOrMain(){
         LinearLayout firstRunUI = (LinearLayout) findViewById(R.id.firstrun_container);
         LinearLayout mainUI = (LinearLayout) findViewById(R.id.main_layout);
-        if (this.controller.getUserName() == null) {
+        if (this.controller.getUser() == null) {
             firstRunUI.setVisibility(View.VISIBLE);
             mainUI.setVisibility(View.GONE);
 

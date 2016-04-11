@@ -1,6 +1,8 @@
 package edu.westga.jetnoisereporter.Controller;
 
 import android.content.Context;
+
+import edu.westga.jetnoisereporter.Model.User;
 import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
 
 public class JetNoiseAppController {
@@ -15,7 +17,7 @@ public class JetNoiseAppController {
         return db.updateUser(name, address, city, zipcode, phone, callerCode);
     }
 
-    public String getUserName() {
+    public User getUser() {
         return db.lookupUser();
     }
 
