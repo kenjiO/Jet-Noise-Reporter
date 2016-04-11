@@ -35,11 +35,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void onSubmitButtonClick(View v) {
         String name = ((EditText) findViewById(R.id.nameEditText)).getText().toString().trim();
+        String email = ((EditText) findViewById(R.id.emailEditText)).getText().toString().trim();
         String  address = ((EditText) findViewById(R.id.streetEditText)).getText().toString().trim();
         String  city = ((EditText) findViewById(R.id.cityEditText)).getText().toString().trim();
         String  zipcode = ((EditText) findViewById(R.id.zipcodeEditText)).getText().toString().trim();
         String  phone = ((EditText) findViewById(R.id.phoneEditText)).getText().toString().trim();
-        if (name.equals("") || address.equals("") || city.equals("") || zipcode.equals("") || phone.equals("")) {
+        if (name.equals("") || address.equals("") || city.equals("") || zipcode.equals("")
+                || phone.equals("") || email.equals("")) {
             Toast.makeText(ProfileActivity.this, "All fields must be entered", Toast.LENGTH_SHORT).show();
         } else {
             this.controller.updateUser(name, address, city, zipcode, phone, "code");

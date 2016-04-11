@@ -52,7 +52,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper {
     }
 
     public long updateUser(String name, String address, String city, String zipcode,
-                           String phone, String callerCode) {
+                           String phone, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // This app is only for a single user so delete all rows and re-create the single user
@@ -65,7 +65,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper {
         values.put(COLUMN_ADDRESS, address);
         values.put(COLUMN_CITY, city);
         values.put(COLUMN_ZIP, zipcode);
-        values.put(COLUMN_CALLER_CODE, callerCode);
+        values.put(COLUMN_EMAIL, email);
         //values.put(COLUMN_REPORT_DATE,"2013-10-07 08:23:19.120");
         // Insert the new row, returning the primary key value of the new row
         long newRowId = -1;
