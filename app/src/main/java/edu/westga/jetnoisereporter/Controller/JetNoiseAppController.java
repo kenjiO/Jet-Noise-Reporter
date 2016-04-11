@@ -34,7 +34,7 @@ public class JetNoiseAppController {
             return "User Profile Not Loaded";
         }
         IncidentReport report = new IncidentReport(this.currentUser);
-        return report.getEmailText(this.currentUser);
+        return report.getEmailText();
     }
 
 

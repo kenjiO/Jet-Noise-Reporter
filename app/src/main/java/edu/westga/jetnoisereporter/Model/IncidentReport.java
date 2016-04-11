@@ -12,15 +12,18 @@ public class IncidentReport {
         this.user = user;
     }
 
-    public String getEmailText(User user) {
+    public String getEmailText() {
+        if (this.user == null) {
+            return "User has not been set";
+        }
         String emailText =
                 "Personal Information:\n" +
-                        "   Name :" + user.getName() + "\n" +
-                        "   Address :" + user.getAddress() + "\n" +
-                        "   City :" + user.getCity() + "\n" +
-                        "   Zip Code :" + user.getZipcode() + "\n" +
-                        "   Phone :" + user.getPhone() + "\n" +
-                        "   Email :" + user.getEmail() + "\n" +
+                        "   Name :" + this.user.getName() + "\n" +
+                        "   Address :" + this.user.getAddress() + "\n" +
+                        "   City :" + this.user.getCity() + "\n" +
+                        "   Zip Code :" + this.user.getZipcode() + "\n" +
+                        "   Phone :" + this.user.getPhone() + "\n" +
+                        "   Email :" + this.user.getEmail() + "\n" +
                         "Noise Event Information:\n" +
                         "   Disturbance Date and Time : " + (new Date()).toString() + "\n" +
                         "   Disturbance Type : Loud disturbance\n" +
