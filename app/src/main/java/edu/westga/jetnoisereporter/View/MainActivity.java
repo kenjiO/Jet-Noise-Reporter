@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
+import edu.westga.jetnoisereporter.Model.User;
 import edu.westga.jetnoisereporter.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,10 +51,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onReportButtonClick(View v) {
+        User user = this.controller.getUser();
+        String subject = "Noise complaint by " + user.getName();
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"kokamot1@my.westga.edu"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kokamot1@my.westga.edu"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT   , "Message Body");
         startActivity(emailIntent);
     }
