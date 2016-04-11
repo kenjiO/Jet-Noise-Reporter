@@ -13,8 +13,45 @@
     tools:showIn="@layout/activity_main"
     tools:context=".View.MainActivity">
 
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/firstrun_container"
+        android:orientation="vertical"
+        android:background="#c3d1de"
+        android:visibility="visible"
+        android:padding="20dp"
+        android:textAlignment="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/require_fill_out_profile"
+            android:id="@+id/textView2"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:layout_margin="30dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Profile"
+            android:id="@+id/createProfileButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:onClick="startProfileActivity"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/main_layout"
+        android:orientation="vertical"
+        android:background="#c3d1de"
+        android:visibility="gone">
+
+    </LinearLayout>
 </RelativeLayout>
