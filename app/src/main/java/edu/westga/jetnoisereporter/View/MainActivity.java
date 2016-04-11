@@ -49,6 +49,15 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
     }
 
+    public void onReportButtonClick(View v) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"kokamot1@my.westga.edu"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT   , "Message Body");
+        startActivity(emailIntent);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
