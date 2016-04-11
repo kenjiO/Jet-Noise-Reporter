@@ -15,9 +15,14 @@ public class JetNoiseAppController {
     }
 
     public void updateUser(String name, String address, String city, String zipcode,
-                           String phone, String callerCode) {
-        db.updateUser(name, address, city, zipcode, phone, callerCode);
-        this.currentUser = this.getUser();
+                           String phone, String email) {
+        User user = new User(name, address, city, zipcode, phone, email);
+        if (name == null || address == null || city == null || zipcode == null
+                || phone == null || email == null) {
+            throw new IllegalArgumentException("All paramaters must not be null");
+        }
+        db.updateUser(user);
+        this.currentUser = user;
     }
 
     public User getUser() {
