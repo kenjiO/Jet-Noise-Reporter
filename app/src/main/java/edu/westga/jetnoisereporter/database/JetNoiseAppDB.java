@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import edu.westga.jetnoisereporter.Model.User;
 
-public class JetNoiseAppDB extends SQLiteOpenHelper {
+public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterface {
 
     private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "JetNoiseDB.db";

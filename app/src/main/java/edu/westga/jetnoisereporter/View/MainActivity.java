@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
 import edu.westga.jetnoisereporter.R;
+import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
 
 public class MainActivity extends AppCompatActivity {
     private JetNoiseAppController controller;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        this.controller = new JetNoiseAppController(this);
+        this.controller = new JetNoiseAppController(new JetNoiseAppDB(this));
     }
 
     public void startProfileActivity(View v) {

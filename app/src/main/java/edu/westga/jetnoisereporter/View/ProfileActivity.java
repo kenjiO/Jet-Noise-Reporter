@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
 import edu.westga.jetnoisereporter.R;
+import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
 
 public class ProfileActivity extends AppCompatActivity {
     private JetNoiseAppController controller;
@@ -16,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        this.controller = new JetNoiseAppController(this);
+        this.controller = new JetNoiseAppController(new JetNoiseAppDB(this));
     }
 
     public void onSubmitButtonClick(View v) {

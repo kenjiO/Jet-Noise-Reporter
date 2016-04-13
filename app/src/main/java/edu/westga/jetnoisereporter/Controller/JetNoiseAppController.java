@@ -4,14 +4,17 @@ import android.content.Context;
 
 import edu.westga.jetnoisereporter.Model.IncidentReport;
 import edu.westga.jetnoisereporter.Model.User;
-import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
+import edu.westga.jetnoisereporter.database.JetNoiseDbInterface;
 
 public class JetNoiseAppController {
-    private JetNoiseAppDB db;
+    private JetNoiseDbInterface db;
     private User currentUser;
 
-    public JetNoiseAppController(Context context) {
-        db = new JetNoiseAppDB(context);
+    public JetNoiseAppController(JetNoiseDbInterface db) {
+        if (db == null) {
+            throw new IllegalArgumentException("JetNoiseDbInterface object cannot be null");
+        }
+        this.db = db;
     }
 
     public void updateUser(String name, String address, String city, String zipcode,
