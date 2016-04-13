@@ -3,15 +3,13 @@ package edu.westga.jetnoisereporter.View;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
-
+import android.widget.Spinner;
 
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
 import edu.westga.jetnoisereporter.R;
@@ -43,12 +41,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void onReportButtonClick(View v) {
         String subject = "Noise complaint";
+        String[] to = new String[]{"kokamot1@my.westga.edu"};
+        this.controller.setActivity(this.getSelectedActivity());
+        String emailText = this.controller.getEmailText();
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"kokamot1@my.westga.edu"});
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, to);
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, this.controller.getEmailText());
+        emailIntent.putExtra(Intent.EXTRA_TEXT, emailText);
         startActivity(emailIntent);
     }
 
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
             firstRunUI.setVisibility(View.GONE);
             mainUI.setVisibility(View.VISIBLE);
         }
+    }
+
+    private String getSelectedActivity() {
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        return spinner.getSelectedItem().toString();
     }
 
 }

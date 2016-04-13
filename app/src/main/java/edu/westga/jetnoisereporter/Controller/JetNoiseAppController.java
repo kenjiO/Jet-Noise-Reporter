@@ -9,6 +9,7 @@ import edu.westga.jetnoisereporter.database.JetNoiseDbInterface;
 public class JetNoiseAppController {
     private JetNoiseDbInterface db;
     private User currentUser;
+    private String disturbedActivity;
 
     public JetNoiseAppController(JetNoiseDbInterface db) {
         if (db == null) {
@@ -36,8 +37,12 @@ public class JetNoiseAppController {
         if (this.getUser() == null) {
             return "User Profile Not Loaded";
         }
-        IncidentReport report = new IncidentReport(this.currentUser);
+        IncidentReport report = new IncidentReport(this.currentUser, this.disturbedActivity);
         return report.getEmailText();
+    }
+
+    public void setActivity(String disturbedActivity) {
+        this.disturbedActivity = disturbedActivity;
     }
 
 

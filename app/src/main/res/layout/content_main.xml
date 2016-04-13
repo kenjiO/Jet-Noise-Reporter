@@ -11,7 +11,8 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
-    tools:context=".View.MainActivity">
+    tools:context=".View.MainActivity"
+    android:visibility="visible">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -19,9 +20,8 @@
         android:id="@+id/firstrun_container"
         android:orientation="vertical"
         android:background="#c3d1de"
-        android:visibility="visible"
-        android:padding="20dp"
-        android:textAlignment="center">
+        android:visibility="gone"
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,26 +29,25 @@
             android:text="@string/welcome"
             android:id="@+id/textView2"
             android:layout_gravity="center_horizontal"
-            android:textAlignment="center"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
             android:textIsSelectable="false"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/overview"
-            android:layout_gravity="center_vertical|right"
+            android:layout_gravity="center_vertical|end"
             android:id="@+id/overviewTextView"
-            android:textSize="16dp" />
+            android:textSize="16sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Profile"
+            android:text="@string/create_profile"
             android:id="@+id/createProfileButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
@@ -62,27 +61,40 @@
         android:layout_height="match_parent"
         android:id="@+id/main_layout"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Click the Report button to send a complaint email to the airport "
+            android:text="@string/click_report_label"
             android:id="@+id/textView"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:textSize="22dp" />
+            android:textSize="22sp"
+            android:layout_marginTop="10dp" />
+
+
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:background="@android:drawable/btn_dropdown"
+            android:entries="@array/disturbed_activites"
+            android:prompt="@string/activity_prompt"
+            android:spinnerMode="dialog"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Report"
+            android:text="@string/report_button"
             android:id="@+id/reportButton"
             android:padding="15dp"
-            android:textSize="22dp"
+            android:textSize="22sp"
             android:layout_gravity="center_horizontal"
-            android:onClick="onReportButtonClick"/>
-        />
+            android:onClick="onReportButtonClick"
+            android:layout_marginTop="20dp" />
+
     </LinearLayout>
 </RelativeLayout>

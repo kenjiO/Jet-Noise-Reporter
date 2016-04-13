@@ -6,6 +6,24 @@
         to the SFO noise abatement office whenever you bothered by jet noise.  First fill
         out your profile.  Then just hit Report and the app will generate an email complaint
         you can send from your preferred email app.</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-
+    <string name="title_activity_profile">Profile</string>
+    <string name="activity_prompt">Choose activity disturbed</string>
+    <string name="report_button">Report</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="click_report_label">Choose what activity was disturbed and click REPORT to send a complaint email to the airport</string>
+    <string-array name="disturbed_activites">
+        <item>Conversation</item>
+        <item>Hearing</item>
+        <item>Meal Time</item>
+        <item>Quality Of Life</item>
+        <item>Outdoors</item>
+        <item>Reading</item>
+        <item>Radio</item>
+        <item>Telephone</item>
+        <item>Television</item>
+        <item>Sleep</item>
+        <item>Study</item>
+        <item>Work At Home</item>
+        <item>Other</item>
+    </string-array>
 </resources>
