@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements ClearProfileYesNo
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
         emailIntent.putExtra(Intent.EXTRA_TEXT, emailText);
         startActivity(emailIntent);
+        this.controller.logReport(this.getSelectedActivity());
     }
 
     @Override

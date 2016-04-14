@@ -21,5 +21,11 @@ public interface JetNoiseDbInterface {
      * Clears the user profile from the DB
      */
     void clearUsers();
+
+    /**
+     * Log a report item to the DB
+     * @param activityDisturbed The activity disturbed or null to leave this out from the report
+     */
+    void logReport(String activityDisturbed);
 }
 

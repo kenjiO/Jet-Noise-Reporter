@@ -25,6 +25,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
     public static final String TABLE_REPORTS = "reports";
     public static final String COLUMN_REPORT_ID = "reportID";
     public static final String COLUMN_REPORT_DATE = "reportDate";
+    public static final String COLUMN_REPORT_ACTIVITY = "reportActivity";
 
     public JetNoiseAppDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -42,6 +43,13 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
                 + COLUMN_PHONE + " TEXT"
                 + ");";
         db.execSQL(CREATE_USERS_TABLE);
+
+        String CREATE_REPORT_TABLE = "CREATE TABLE " + TABLE_REPORTS + "("
+                + COLUMN_REPORT_ID + "  INTEGER PRIMARY KEY,"
+                + COLUMN_REPORT_DATE + " DATETIME DEFAULT CURRENT_TIMESTAMP,"
+                + COLUMN_REPORT_ACTIVITY + " TEXT"
+                + ");";
+        db.execSQL(CREATE_REPORT_TABLE);
     }
 
     @Override
@@ -108,6 +116,18 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         SQLiteDatabase db = this.getWritableDatabase();
         String deleteQuery = "DELETE FROM " + TABLE_USERS;
         db.execSQL(deleteQuery);
+    }
+
+    @Override
+    public void logReport(String activityDisturbed) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        if (activityDisturbed != null && !activityDisturbed.trim().equals("")) {
+            values.put(COLUMN_REPORT_ACTIVITY, activityDisturbed);
+        }
+        db.insert(TABLE_REPORTS, null, values);
+        db.close();
     }
 
 }

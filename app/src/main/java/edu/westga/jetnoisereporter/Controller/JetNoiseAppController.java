@@ -49,5 +49,9 @@ public class JetNoiseAppController {
         this.disturbedActivity = disturbedActivity;
     }
 
+    public void logReport(String disturbedActivity) {
+        this.db.logReport(disturbedActivity);
+    }
+
 
 }
