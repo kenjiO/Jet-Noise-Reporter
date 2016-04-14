@@ -20,21 +20,21 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
     public String getAddress() {
-        return address;
+        return this.address;
     }
     public String getCity() {
-        return city;
+        return this.city;
     }
     public String getZipcode() {
-        return zipcode;
+        return this.zipcode;
     }
     public String getPhone() {
-        return phone;
+        return this.phone;
     }
     public String getEmail() {
-        return email;
+        return this.email;
     }
 }
