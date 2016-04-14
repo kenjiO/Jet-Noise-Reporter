@@ -52,7 +52,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
     }
 
     @Override
-    public long updateUser(User user) {
+    public void updateUser(User user) {
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
         }
@@ -68,12 +68,11 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         values.put(COLUMN_CITY, user.getCity());
         values.put(COLUMN_ZIP, user.getZipcode());
         values.put(COLUMN_EMAIL, user.getEmail());
-        //values.put(COLUMN_REPORT_DATE,"2013-10-07 08:23:19.120");
+
         // Insert the new row, returning the primary key value of the new row
-        long newRowId = -1;
-       newRowId = db.insert(TABLE_USERS, null, values);
+       db.insert(TABLE_USERS, null, values);
         db.close();
-        return  newRowId;
+
     }
 
     @Override

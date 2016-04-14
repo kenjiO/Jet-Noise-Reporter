@@ -7,9 +7,8 @@ public class MockDb implements JetNoiseDbInterface{
     private User currentUser;
 
     @Override
-    public long updateUser(User user) {
+    public void updateUser(User user) {
         this.currentUser = user;
-        return 0;
     }
 
     @Override
