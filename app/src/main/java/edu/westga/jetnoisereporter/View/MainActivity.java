@@ -34,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements ClearProfileYesNo
         startActivity(intent);
     }
 
+    public void startReportListActivity() {
+        Intent intent = new Intent(this, ReportListActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onResume() {
         this.showProfileOrMain();
@@ -71,11 +76,15 @@ public class MainActivity extends AppCompatActivity implements ClearProfileYesNo
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_update_profile) {
-            startProfileActivity(null);
+            this.startProfileActivity(null);
         }
 
         if (id == R.id.action_clear_profile) {
             this.showConfirmClearDialog();
+        }
+
+        if (id == R.id.action_view_logs) {
+            this.startReportListActivity();
         }
         return super.onOptionsItemSelected(item);
     }

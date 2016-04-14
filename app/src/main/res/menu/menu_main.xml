@@ -11,4 +11,9 @@
         android:title="@string/action_clear_profile"
         android:orderInCategory="101"
         app:showAsAction="never" />
+
+    <item android:id="@+id/action_view_logs"
+        android:title="@string/action_show_logs"
+        android:orderInCategory="101"
+        app:showAsAction="never" />
 </menu>

@@ -3,6 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="action_update_profile">Update Profile</string>
     <string name="action_clear_profile">Clear Profile</string>
+    <string name="action_show_logs">View report history</string>
     <string name="welcome">Welcome to the SFO Jet Noise Reporter</string>
     <string name="overview">This app will let you easily submit an email complaint
         to the SFO noise abatement office whenever you bothered by jet noise.  First fill
@@ -28,4 +29,5 @@
         <item>Work At Home</item>
         <item>Other</item>
     </string-array>
+    <string name="title_activity_report_list">Report History</string>
 </resources>
