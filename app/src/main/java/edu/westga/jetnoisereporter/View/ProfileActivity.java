@@ -31,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
                 || phone.equals("") || email.equals("")) {
             Toast.makeText(ProfileActivity.this, "All fields must be entered", Toast.LENGTH_SHORT).show();
         } else {
-            this.controller.updateUser(name, address, city, zipcode, phone, "code");
+            this.controller.updateUser(name, address, city, zipcode, phone, email);
             finish();
         }
     }
