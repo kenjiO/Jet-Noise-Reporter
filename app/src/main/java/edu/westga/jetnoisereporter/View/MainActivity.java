@@ -1,6 +1,5 @@
 package edu.westga.jetnoisereporter.View;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
 import edu.westga.jetnoisereporter.R;
 import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ClearProfileYesNoDialog.ClearProfileOkListener {
     private JetNoiseAppController controller;
 
     @Override
@@ -72,8 +72,20 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_update_profile) {
             startProfileActivity(null);
         }
+
+        if (id == R.id.action_clear_profile) {
+            this.showConfirmClearDialog();
+        }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void clearProfileOkSelected(){
+        this.controller.clearProfile();
+        this.showProfileOrMain();
+        Toast toast = Toast.makeText(getApplicationContext(), "Profile cleared", Toast.LENGTH_SHORT);
+        toast.show();
+    };
 
     private void showProfileOrMain(){
         LinearLayout firstRunUI = (LinearLayout) findViewById(R.id.firstrun_container);
@@ -90,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
     private String getSelectedActivity() {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         return spinner.getSelectedItem().toString();
+    }
+
+    private void showConfirmClearDialog() {
+        ClearProfileYesNoDialog confirmClearProfile = new ClearProfileYesNoDialog();
+        confirmClearProfile.show(getFragmentManager(), null);
     }
 
 }

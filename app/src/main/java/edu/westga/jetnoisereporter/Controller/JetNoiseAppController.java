@@ -29,6 +29,10 @@ public class JetNoiseAppController {
         this.currentUser = user;
     }
 
+    public void clearProfile() {
+        this.db.clearUsers();
+    }
+
     public User getUser() {
         return this.currentUser = db.lookupUser();
     }

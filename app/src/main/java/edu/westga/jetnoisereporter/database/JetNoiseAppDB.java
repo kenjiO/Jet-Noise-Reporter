@@ -51,6 +51,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         onCreate(db);
     }
 
+    @Override
     public long updateUser(User user) {
         if (user == null) {
             throw new IllegalArgumentException("User cannot be null");
@@ -58,8 +59,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         SQLiteDatabase db = this.getWritableDatabase();
 
         // This app is only for a single user so delete all rows and re-create the single user
-        String deleteQuery = "DELETE FROM " + TABLE_USERS;
-        db.execSQL(deleteQuery);
+        this.clearUsers();
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.getName());
@@ -76,6 +76,7 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         return  newRowId;
     }
 
+    @Override
     public User lookupUser() {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT " +
@@ -101,6 +102,13 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         }
         db.close();
         return result;
+    }
+
+    @Override
+    public void clearUsers() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String deleteQuery = "DELETE FROM " + TABLE_USERS;
+        db.execSQL(deleteQuery);
     }
 
 }

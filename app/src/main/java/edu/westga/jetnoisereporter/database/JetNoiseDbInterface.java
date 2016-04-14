@@ -6,6 +6,7 @@ public interface JetNoiseDbInterface {
 
     public long updateUser(User user);
     public User lookupUser() ;
+    public void clearUsers();
 
 }
 

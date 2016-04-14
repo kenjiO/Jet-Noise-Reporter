@@ -16,4 +16,9 @@ public class MockDb implements JetNoiseDbInterface{
     public User lookupUser() {
         return this.currentUser;
     }
+
+    @Override
+    public void clearUsers() {
+
+    }
 }

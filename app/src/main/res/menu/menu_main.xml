@@ -6,4 +6,9 @@
         android:title="@string/action_update_profile"
         android:orderInCategory="100"
         app:showAsAction="never" />
+
+    <item android:id="@+id/action_clear_profile"
+        android:title="@string/action_clear_profile"
+        android:orderInCategory="101"
+        app:showAsAction="never" />
 </menu>
