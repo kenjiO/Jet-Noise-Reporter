@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import edu.westga.jetnoisereporter.Model.LogItem;
@@ -40,8 +43,9 @@ public class ReportListItemAdapter extends RecyclerView.Adapter<ReportListItemAd
     @Override
     public void onBindViewHolder(ReportItemViewHolder holder, int position) {
         LogItem item = logItems.get(position);
-        holder.dateTime.setText(item.getDateTime().toString());
-        holder.activityDisturbed.setText(item.getActivityDisturbed());
+        DateFormat df = new SimpleDateFormat("EEE, MMM d  hh:mm aaa");
+        holder.dateTime.setText(df.format(item.getDateTime()));
+        holder.activityDisturbed.setText("Activity Disturbed: " + item.getActivityDisturbed());
     }
 
     @Override
