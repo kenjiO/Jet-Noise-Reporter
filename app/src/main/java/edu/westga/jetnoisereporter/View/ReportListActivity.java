@@ -7,12 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
-import edu.westga.jetnoisereporter.Model.LogItem;
 import edu.westga.jetnoisereporter.R;
 import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
 
