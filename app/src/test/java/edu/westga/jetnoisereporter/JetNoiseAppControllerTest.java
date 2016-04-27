@@ -3,9 +3,11 @@ package edu.westga.jetnoisereporter;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.List;
 
 import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
 import edu.westga.jetnoisereporter.Model.IncidentReport;
+import edu.westga.jetnoisereporter.Model.LogItem;
 import edu.westga.jetnoisereporter.Model.User;
 
 import static org.junit.Assert.*;
@@ -150,6 +152,14 @@ public class JetNoiseAppControllerTest {
         assertEquals(expected, controller.getEmailText());
     }
 
+    @Test
+    public void testGetReportLogReturnsResultOfTheSameDbMethod(){
+        JetNoiseAppController controller = new JetNoiseAppController(new MockDb());
+        List<LogItem> reportLog = controller.getReportLog();
+        assertEquals(2, reportLog.size());
+        assertEquals("Mock1", reportLog.get(0).getActivityDisturbed());
+        assertEquals("Mock2", reportLog.get(1).getActivityDisturbed());
+    }
 
 
 }

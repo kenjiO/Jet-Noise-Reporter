@@ -1,6 +1,7 @@
 package edu.westga.jetnoisereporter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.westga.jetnoisereporter.Model.LogItem;
@@ -31,6 +32,9 @@ public class MockDb implements JetNoiseDbInterface{
 
     @Override
     public List<LogItem> getReportLog() {
-        return new ArrayList<LogItem>();
+        List<LogItem> result = new ArrayList<LogItem>();
+        result.add(new LogItem(new Date(), "Mock1"));
+        result.add(new LogItem(new Date(), "Mock2"));
+        return result;
     }
 }
