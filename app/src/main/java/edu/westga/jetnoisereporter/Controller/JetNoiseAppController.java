@@ -2,7 +2,10 @@ package edu.westga.jetnoisereporter.Controller;
 
 import android.content.Context;
 
+import java.util.List;
+
 import edu.westga.jetnoisereporter.Model.IncidentReport;
+import edu.westga.jetnoisereporter.Model.LogItem;
 import edu.westga.jetnoisereporter.Model.User;
 import edu.westga.jetnoisereporter.database.JetNoiseDbInterface;
 
@@ -53,5 +56,12 @@ public class JetNoiseAppController {
         this.db.logReport(disturbedActivity);
     }
 
+    public List<LogItem> getReportLog() {
+        return this.db.getReportLog();
+    }
 
-}
+
+
+
+
+    }

@@ -11,11 +11,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import edu.westga.jetnoisereporter.Controller.JetNoiseAppController;
 import edu.westga.jetnoisereporter.Model.LogItem;
 import edu.westga.jetnoisereporter.R;
+import edu.westga.jetnoisereporter.database.JetNoiseAppDB;
 
 public class ReportListActivity extends AppCompatActivity {
-    private List<LogItem> logItems = new ArrayList<>();
+    private JetNoiseAppController controller;
     private RecyclerView recyclerView;
     private ReportListItemAdapter listItemAdapter;
 
@@ -26,17 +28,14 @@ public class ReportListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        this.controller = new JetNoiseAppController(new JetNoiseAppDB(this));
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        listItemAdapter = new ReportListItemAdapter(logItems);
+        listItemAdapter = new ReportListItemAdapter(this.controller.getReportLog());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(listItemAdapter);
-
-        logItems.add(new LogItem(new Date(), "Dummy1"));
-        logItems.add(new LogItem(new Date(), "Dummy2"));
-
         listItemAdapter.notifyDataSetChanged();
     }
 

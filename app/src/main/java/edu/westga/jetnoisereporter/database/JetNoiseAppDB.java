@@ -6,6 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import edu.westga.jetnoisereporter.Model.LogItem;
 import edu.westga.jetnoisereporter.Model.User;
 
 public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterface {
@@ -123,11 +130,40 @@ public class JetNoiseAppDB extends SQLiteOpenHelper implements JetNoiseDbInterfa
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        values.put(COLUMN_REPORT_DATE, dateFormat.format(date));
         if (activityDisturbed != null && !activityDisturbed.trim().equals("")) {
             values.put(COLUMN_REPORT_ACTIVITY, activityDisturbed);
         }
         db.insert(TABLE_REPORTS, null, values);
         db.close();
     }
+
+    @Override
+    public List<LogItem> getReportLog() {
+        List<LogItem> reports = new ArrayList<LogItem>();
+        String selectQuery = "SELECT " + COLUMN_REPORT_DATE + "," + COLUMN_REPORT_ACTIVITY +
+                " FROM " + TABLE_REPORTS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String dateAsString = cursor.getString(0);
+                String expectedPattern = "MM/dd/yyyy";
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                String userInput = "09/22/2009";
+                Date date = null;
+                try {
+                    date = dateFormat.parse(dateAsString);
+                } catch (ParseException e) {}
+                String activityDisturbed = cursor.getString(1);
+                LogItem report = new LogItem(date, activityDisturbed);
+                reports.add(report);
+            } while (cursor.moveToNext());
+        }
+        return reports;
+    }
+
 
 }

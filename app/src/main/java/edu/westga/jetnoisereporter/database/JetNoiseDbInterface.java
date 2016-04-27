@@ -1,5 +1,8 @@
 package edu.westga.jetnoisereporter.database;
 
+import java.util.List;
+
+import edu.westga.jetnoisereporter.Model.LogItem;
 import edu.westga.jetnoisereporter.Model.User;
 
 public interface JetNoiseDbInterface {
@@ -27,5 +30,12 @@ public interface JetNoiseDbInterface {
      * @param activityDisturbed The activity disturbed or null to leave this out from the report
      */
     void logReport(String activityDisturbed);
+
+    /**
+     * Get a list of reports made
+     * @return A list of LogItem objects representing each report made
+     */
+    List<LogItem> getReportLog();
+
 }
 
